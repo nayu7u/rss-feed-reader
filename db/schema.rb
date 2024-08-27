@@ -22,7 +22,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_27_152517) do
     t.string "title"
     t.string "link"
     t.string "description"
+    t.integer "feed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["feed_id"], name: "index_items_on_feed_id"
+    t.index ["link", "feed_id"], name: "index_items_on_link_and_feed_id", unique: true
   end
+
+  add_foreign_key "items", "feeds"
 end
