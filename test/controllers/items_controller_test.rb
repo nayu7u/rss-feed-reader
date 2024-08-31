@@ -17,7 +17,8 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create item" do
     assert_difference("Item.count") do
-      post items_url, params: { item: { description: @item.description, link: @item.link, title: @item.title } }
+      feed = Feed.create!(name: "name", url: "url")
+      post items_url, params: { item: { description: @item.description, link: @item.link, title: @item.title, feed_id: feed.id } }
     end
 
     assert_redirected_to item_url(Item.last)
@@ -34,7 +35,8 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update item" do
-    patch item_url(@item), params: { item: { description: @item.description, link: @item.link, title: @item.title } }
+    feed = Feed.create!(name: "name", url: "url")
+    patch item_url(@item), params: { item: { description: @item.description, link: @item.link, title: @item.title, feed_id: feed.id } }
     assert_redirected_to item_url(@item)
   end
 
