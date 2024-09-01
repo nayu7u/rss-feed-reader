@@ -1,7 +1,7 @@
 require "net/http"
 
 class Feed < ApplicationRecord
-  has_many :items
+  has_many :items, dependent: :destroy
 
   def rss
     xml = Net::HTTP.get(URI.parse(url))
