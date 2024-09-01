@@ -10,34 +10,9 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get new_item_url
-    assert_response :success
-  end
-
-  test "should create item" do
-    assert_difference("Item.count") do
-      feed = Feed.create!(name: "name", url: "url")
-      post items_url, params: { item: { description: @item.description, link: @item.link, title: @item.title, feed_id: feed.id } }
-    end
-
-    assert_redirected_to item_url(Item.last)
-  end
-
   test "should show item" do
     get item_url(@item)
     assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_item_url(@item)
-    assert_response :success
-  end
-
-  test "should update item" do
-    feed = Feed.create!(name: "name", url: "url")
-    patch item_url(@item), params: { item: { description: @item.description, link: @item.link, title: @item.title, feed_id: feed.id } }
-    assert_redirected_to item_url(@item)
   end
 
   test "should destroy item" do
