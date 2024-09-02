@@ -10,8 +10,7 @@ RSpec.describe "Items", type: :request do
 
   describe "GET /items/:id" do
     it "responds ok" do
-      feed = Feed.create
-      item = Item.create(feed:)
+      item = create(:item)
       get item_path(item)
       expect(response).to have_http_status(200)
     end
@@ -19,8 +18,7 @@ RSpec.describe "Items", type: :request do
 
   describe "DELETE /items/:id" do
     it "redirect to items_path" do
-      feed = Feed.create
-      item = Item.create(feed:)
+      item = create(:item)
       delete item_path(item)
       expect(response).to redirect_to(items_path)
     end
