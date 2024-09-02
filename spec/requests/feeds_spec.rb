@@ -30,7 +30,7 @@ RSpec.describe "Feeds", type: :request do
 
   describe "GET /feeds/:id" do
     it "responds ok" do
-      feed = Feed.create!
+      feed = create(:feed)
       get feed_path(feed)
       expect(response).to have_http_status(200)
     end
@@ -38,7 +38,7 @@ RSpec.describe "Feeds", type: :request do
 
   describe "GET /feeds/:id/edit" do
     it "responds ok" do
-      feed = Feed.create!
+      feed = create(:feed)
       get edit_feed_path(feed)
       expect(response).to have_http_status(200)
     end
@@ -46,7 +46,7 @@ RSpec.describe "Feeds", type: :request do
 
   describe "GET /feeds/:id/edit" do
     it "redirect to feed_path(feed)" do
-      feed = Feed.create!
+      feed = create(:feed)
       patch feed_path(feed), params: { feed: { name: "name", url: "url" } }
       expect(response).to redirect_to(feed_path(feed))
     end
@@ -54,14 +54,14 @@ RSpec.describe "Feeds", type: :request do
 
   describe "DELETE /feeds/:id" do
     it "destroy the feed" do
-      feed = Feed.create
+      feed = create(:feed)
       expect {
         delete feed_path(feed)
       }.to change(Feed, :count).by(-1)
     end
 
     it "redirect to feeds_path" do
-      feed = Feed.create
+      feed = create(:feed)
       delete feed_path(feed)
       expect(response).to redirect_to(feeds_path)
     end
