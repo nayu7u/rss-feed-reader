@@ -10,7 +10,7 @@ class Feed < ApplicationRecord
 
   def create_items
     rss.items.map do |item|
-      Item.create!(title: item.title, link: item.link, description: item.description, feed_id: self.id)
+      Item.create(title: item.title, link: item.link, description: item.description, feed_id: self.id)
     end
   end
 end
