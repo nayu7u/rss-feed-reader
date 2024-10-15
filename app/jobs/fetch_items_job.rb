@@ -2,6 +2,6 @@ class FetchItemsJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    # Do something later
+    Feed.all.each(&:create_items)
   end
 end
