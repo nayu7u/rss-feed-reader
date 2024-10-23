@@ -18,8 +18,16 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="flex">
+    <aside class="bg-blue-700 flex-auto h-screen">
+      <div class="mx-5 my-5 text-white">
+        <%= link_to("Items", items_path) %>
+      </div>
+      <div class="mx-5 my-5 text-white">
+        <%= link_to("Feeds", feeds_path) %>
+      </div>
+    </aside>
+    <main class="container mx-auto mt-5 px-5 flex flex-auto">
       <%= yield %>
     </main>
   </body>
