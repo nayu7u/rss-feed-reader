@@ -12,9 +12,6 @@
   <div id="items" class="min-w-full">
     <% @items.each do |item| %>
       <%= render item %>
-      <p>
-        <%= link_to "Show this item", item, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
     <% end %>
   </div>
 </div>
