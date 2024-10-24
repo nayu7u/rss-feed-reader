@@ -9,3 +9,7 @@
 #   end
 
 Feed.create!(name: "zenn topic rails", url: "https://zenn.dev/topics/rails/feed")
+Feed.create!(name: "Ruby Weekly", url: "https://cprss.s3.amazonaws.com/rubyweekly.com.xml")
+Feed.create!(name: "THIS WEEK IN RAILS", url: "https://world.hey.com/this.week.in.rails/feed.atom")
+Feed.create!(name: "Hotwire Weekly", url: "https://hotwireweekly.com/rss")
+Feed.all.each(&:create_items)
